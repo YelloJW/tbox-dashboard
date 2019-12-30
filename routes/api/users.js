@@ -45,10 +45,6 @@ router.post("/register", (req, res) => {
   });
 });
 
-router.get("/register", (req, res)=> {
-  console.log("hello")
-})
-
 // route for login in user
 router.post("/login", (req, res) => {
   // save form validation to const
