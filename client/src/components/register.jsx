@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from 'axios';
-
+import history from '../history';
 
 class Register extends Component {
   constructor() {
@@ -35,6 +35,7 @@ class Register extends Component {
       console.log(res)
       if (res.data) {
         console.log("successful registration")
+        history.push('/');
       }
     })
   };

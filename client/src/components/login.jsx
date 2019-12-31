@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import history from '../history';
-
-
 import axios from 'axios';
+import history from '../history';
 
 class Login extends Component {
   constructor() {
@@ -33,7 +31,10 @@ class Login extends Component {
         if (res.data) {
           console.log("successful login")
           console.log(res.data)
-          history.push('/dashboard');
+          history.push({
+            pathname: '/dashboard',
+            state: Userdata
+          });
         }
       })
   };

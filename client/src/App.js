@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { Router, Route , Link} from "react-router-dom";
 import history from './history';
 
-
-
 import Dashboard from './components/dashboard'
 import Login from './components/login'
 import Register from './components/register'
