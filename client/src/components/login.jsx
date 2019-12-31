@@ -42,30 +42,33 @@ class Login extends Component {
   render() {
     const { errors } = this.state;
     return (
-      <div className="">
-        <div className="">
-          <div className="">
-            <div className="">
-              <h1>Hackathon</h1>
-            </div>
-            <form noValidate onSubmit={this.onSubmit}>
-              <div className="">
-                <label htmlFor="email">Email</label>
-                <input onChange={this.onChange} value={this.state.email} error={errors.email} id="email" type="text"/>
-              </div>
-              <div className="">
-                <label htmlFor="password">Password</label>
-                <input onChange={this.onChange} value={this.state.password} error={errors.password} id="password" type="password"/>
-              </div>
-              <div className="">
-                <button type="submit" className="" >Login</button>
-              </div>
-            </form>
-            <p className="">
-              New to hackathon? <Link to="/register">Sign up</Link>
-            </p>
+      <div className="container">
+        <div className="row">
+          <div className="col-12">
+            <h1>Dev Challenege</h1>
           </div>
         </div>
+        <form noValidate onSubmit={this.onSubmit}>
+          <div className="row">
+            <div className="col-3 offset-2 form-group">
+              <label htmlFor="email">Email</label>
+              <input className="form-control-plaintext" onChange={this.onChange} value={this.state.email} error={errors.email} id="email" type="text"/>
+            </div>
+            <div className="col-3 offset-2 form-group">
+              <label htmlFor="password">Password</label>
+              <input className="form-control-plaintext" onChange={this.onChange} value={this.state.password} error={errors.password} id="password" type="password"/>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-12 ">
+              <button type="submit" className="btn-tbox" >Login</button>
+            </div>
+          </div>
+        </form>
+        <br/>
+        <p className="redirect-to-register">
+          New to the challenge? <Link to="/register">Sign up</Link>
+        </p>
       </div>
     );
   }

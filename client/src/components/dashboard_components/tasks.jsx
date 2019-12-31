@@ -4,9 +4,13 @@ class Tasks extends Component {
 
   render() {
     return(
-      <div>
-        <h1>Tasks</h1>
-        <p>some info about Tasks</p>
+      <div className="dashboard-card">
+        <div className="dashboard-card-title">
+          <h2>Tasks</h2>
+        </div>
+        <div className="dashboard-card-contents">
+          <p>some info about Tasks</p>
+        </div>
       </div>
     )
   }

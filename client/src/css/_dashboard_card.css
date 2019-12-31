@@ -1,0 +1,31 @@
+.dashboard-card {
+  background: none;
+  border: 2.5px solid #EBD860;
+  border-radius: 5px;
+  margin-top: 25px;
+  width: 100%;
+  height: 225px;
+  text-align: center;
+}
+
+.dashboard-card-title {
+  background: #EBD860;
+  height: 20%;
+  width: 100%;
+}
+
+.dashboard-card-title h2 {
+  margin: 0 auto;
+  padding: 5px;
+}
+
+.dashboard-card-contents {
+  background: rgba(255,255,255,0.5);
+  height: 80%;
+}
+
+
+.dashboard-card-contents h3, p {
+  margin: 0px auto;
+  padding: 10px;
+}

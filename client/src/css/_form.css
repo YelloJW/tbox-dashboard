@@ -1,0 +1,29 @@
+.form-group{
+  height: 35px;
+  padding-left:0px;
+  border-bottom: 2px solid white;
+  text-align:left;
+  font-size: 25px;
+  display: flex;
+  white-space: nowrap;
+}
+
+.form-control-plaintext {
+  padding: 0;
+  line-height: 25px;
+  color: white;
+  margin-left:10px;
+  text-align:center;
+}
+
+.form-control-plaintext textarea:focus, input:focus{
+  outline: none;
+}
+
+.redirect-to-register {
+  font-size: 25px;
+}
+
+.redirect-to-register a{
+  color: yellow;
+}

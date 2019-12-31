@@ -1,31 +1,20 @@
-.container {
-  height:100vh;
-  width:100%;
-  text-align: center;
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700&display=swap');
+@import 'css/_dashboard.css';
+@import 'css/_dashboard_card.css';
+@import 'css/_btns.css';
+@import 'css/_form.css';
+@import 'css/_weather.css';
+
+
+body {
+  background-image: linear-gradient(rgba(124, 181, 218, 0.52), rgba(150, 150, 150, 0.73)),
+  url('https://images.unsplash.com/photo-1544006659-f0b21884ce1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80');
+/*background-image: url('./images/background.png');*/
+  background-size:cover;
 }
 
-.dashboard-container {
-  margin: 0 auto;
-  height: 80%;
-  width:90%;
-  display:flex;
-  justify-content: center;
-  flex-wrap: wrap;
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Lato', sans-serif;
+  font-weight: 600;
 }
 
-.dashboard-card {
-  background: white;
-  border: 2px solid orange;
-  border-radius: 5px;
-  margin: 5%;
-  width: 20%;
-  height: 30%;
-  text-align: center;
-
-}
-
-.dashboard-card h1 {
-  margin-top: 0;
-  width: 100%;
-  background: orange;
-}

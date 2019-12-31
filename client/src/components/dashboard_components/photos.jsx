@@ -4,9 +4,13 @@ class Photos extends Component {
 
   render() {
     return(
-      <div>
-        <h1>Photos</h1>
-        <p>some info about Photos</p>
+      <div className="dashboard-card">
+        <div className="dashboard-card-title">
+          <h2>Photos</h2>
+        </div>
+        <div className="dashboard-card-contents">
+          <p>some info about Photos</p>
+        </div>
       </div>
     )
   }

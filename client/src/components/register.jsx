@@ -43,42 +43,45 @@ class Register extends Component {
   render() {
     const { errors } = this.state;
     return (
-      <div className="">
-        <div className="">
-          <div className="">
-            <div className="">
-              <h1>Hackathon</h1>
-              <h4>
-                <b>Register</b> below
-              </h4>
-            </div>
-            <form noValidate onSubmit={this.onSubmit}>
-              <div className="">
-                <label htmlFor="name">Username</label>
-                <input onChange={this.onChange} value={this.state.name} error={errors.name} id="name" type="text"/>
-              </div>
-              <div className="">
-                <label htmlFor="email">Email</label>
-                <input onChange={this.onChange} value={this.state.email} error={errors.email} id="email" type="email"/>
-              </div>
-              <div className="">
-                <label htmlFor="password">Password</label>
-                <input onChange={this.onChange} value={this.state.password} error={errors.password} id="password" type="password"/>
-              </div>
-              <div className="">
-                <label htmlFor="password2">Confirm Password</label>
-                <input onChange={this.onChange} value={this.state.password2} error={errors.password2} id="password2" type="password" />
-              </div>
-              <div className="">
-                <button type="submit" className="" >Register</button>
-              </div>
-            </form>
-            <p className="">
-              Already have an account? <Link to="/">Log in</Link>
-            </p>
+      <div className="container">
+        <div className="row">
+          <div className="col-12">
+            <h1>Dev Challenege</h1>
           </div>
         </div>
+        <form noValidate onSubmit={this.onSubmit}>
+          <div className="row pt-5">
+            <div className="col-4 offset-2 form-group">
+              <label htmlFor="name">Username</label>
+              <input className="form-control-plaintext" onChange={this.onChange} value={this.state.name} error={errors.name} id="name" type="text"/>
+            </div>
+            <div className="col-4 offset-1 form-group">
+                <label htmlFor="email">Email</label>
+                <input className="form-control-plaintext" onChange={this.onChange} value={this.state.email} error={errors.email} id="email" type="email"/>
+            </div>
+          </div>
+          <div className="row pt-5">
+            <div className="col-4 offset-2 form-group">
+              <label htmlFor="password">Password</label>
+              <input className="form-control-plaintext" onChange={this.onChange} value={this.state.password} error={errors.password} id="password" type="password"/>
+            </div>
+            <div className="col-4 offset-1 form-group">
+              <label htmlFor="password2">Confirm password</label>
+              <input className="form-control-plaintext" onChange={this.onChange} value={this.state.password2} error={errors.password2} id="password2" type="password" />
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-12 ">
+              <button type="submit" className="btn-tbox" >Register</button>
+            </div>
+          </div>
+        </form>
+        <br/>
+        <p className="redirect-to-register">
+          Already have an account? <Link to="/">Log in</Link>
+        </p>
       </div>
+
     );
   }
 }

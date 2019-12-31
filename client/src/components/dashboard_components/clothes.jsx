@@ -3,10 +3,14 @@ import React, { Component} from 'react'
 class Clothes extends Component {
 
   render() {
-    return(
-      <div>
-        <h1>Clothes</h1>
-        <p>some info about Clothes</p>
+    return (
+      <div className="dashboard-card">
+        <div className="dashboard-card-title">
+          <h4>Clothes</h4>
+        </div>
+        <div className="dashboard-card-contents">
+          <p>some info about Clothes</p>
+        </div>
       </div>
     )
   }

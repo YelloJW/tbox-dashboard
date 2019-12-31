@@ -16,14 +16,14 @@ class Dashboard extends Component {
     // console.log(history.config.data.email)
     return (
     <div className="container">
-      <h1>Good day {user}</h1>
+      <h1 className="dashboard-title">Good day {user}</h1>
       <div className="dashboard-container">
-        <div className="dashboard-card"><Weather/></div>
-        <div className="dashboard-card"><News/></div>
-        <div className="dashboard-card"><Sport/></div>
-        <div className="dashboard-card"><Photos/></div>
-        <div className="dashboard-card"><Tasks/></div>
-        <div className="dashboard-card"><Clothes/></div>
+        <Weather/>
+        <News/>
+        <Sport/>
+        <Photos/>
+        <Tasks/>
+        <Clothes/>
       </div>
     </div>
     )
