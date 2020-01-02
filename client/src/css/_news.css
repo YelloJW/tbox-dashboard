@@ -1,0 +1,28 @@
+.newsContainer {
+  width:100%;
+  height: 100vh;
+  text-align: center;
+  color: white;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 4vh 0;
+}
+
+.newsImg {
+  height: 50%;
+  width: 40%;
+  border: 4px solid #EBD860;
+  border-radius: 3px;
+  margin-bottom: 3%;
+}
+
+.newsContent {
+  width:80%;
+  font-size: 20px;
+}
+
+.newsContent h2 {
+
+}

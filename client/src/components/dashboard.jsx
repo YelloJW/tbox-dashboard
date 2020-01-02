@@ -11,9 +11,7 @@ import Clothes from './dashboard_components/clothes';
 
 class Dashboard extends Component {
   render() {
-    console.log("hello")
     const user = history.location.state.email
-    // console.log(history.config.data.email)
     return (
     <div className="container">
       <h1 className="dashboard-title">Good day {user}</h1>

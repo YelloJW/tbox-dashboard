@@ -27,10 +27,7 @@ class Login extends Component {
 
     axios.post('http://localhost:5000/api/users/login', Userdata)
       .then(res => {
-        console.log(res)
         if (res.data) {
-          console.log("successful login")
-          console.log(res.data)
           history.push({
             pathname: '/dashboard',
             state: Userdata
