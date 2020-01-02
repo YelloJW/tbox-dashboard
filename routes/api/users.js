@@ -1,26 +1,29 @@
-// dependencies
+// Dependencies
 const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const keys = require("../../config/keys");
 
-// load user validation
+// Load user validation functions
 const validateRegisterInput = require("../../validation/register");
 const validateLoginInput = require("../../validation/login");
 
-// load User model
+// Load User model
 const User = require("../../models/User");
 
-// route for registering user
+// Route for registering user
 router.post("/register", (req, res) => {
-  // save form validation to const
+
+  // Save output of form validation to const
   const { errors, isValid } = validateRegisterInput(req.body);
-  // check if input valid
+
+  // Check if input valid
   if (!isValid) {
     return res.status(400).json(errors);
   }
-  // if input valid return an instance of that user and if no instance exists create a new one
+
+  // If input valid return an instance of that user and if no instance exists create a new one
   User.findOne({ email: req.body.email }).then(user => {
     if (user) {
       return res.status(400).json({ email: "Email already exists" });
@@ -30,6 +33,7 @@ router.post("/register", (req, res) => {
         email: req.body.email,
         password: req.body.password
       });
+
       // Hash password using bcrypt before saving in database
       bcrypt.genSalt(10, (err, salt) => {
         bcrypt.hash(newUser.password, salt, (err, hash) => {
@@ -45,27 +49,34 @@ router.post("/register", (req, res) => {
   });
 });
 
-// route for login in user
+// Route for login in user
 router.post("/login", (req, res) => {
-  // save form validation to const
+
+  // Save output of form validation to const
   const { errors, isValid } = validateLoginInput(req.body);
-  // check if input valid
+
+  // Check if input valid
   if (!isValid) {
     return res.status(400).json(errors);
   }
+
+  // save user input
   const email = req.body.email;
   const password = req.body.password;
-  // find user by email
+
+  // Find user by email
   User.findOne({ email }).then(user => {
-    // check if user exists
+
+    // Check if user exists
     if (!user) {
       return res.status(404).json({ emailnotfound: "Email not found, please sign up to continue" });
     }
-    // check password
+
+    // Check password
     bcrypt.compare(password, user.password).then(isMatch => {
       if (isMatch) {
-        // user matched
-        // create JWT payload
+
+        // If saved and input passwords match create JWT payload
         const payload = {
           id: user.id,
           name: user.name

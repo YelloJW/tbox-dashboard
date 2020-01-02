@@ -1,8 +1,8 @@
-// dependencies
+// Dependencies
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema;
 
-// create schema
+// Create schema with validation rules
 const UserSchema = new Schema ({
   name: {
     type: String,
@@ -22,5 +22,6 @@ const UserSchema = new Schema ({
   }
 });
 
+// Export model
 User = mongoose.model("users", UserSchema);
 module.exports = User
