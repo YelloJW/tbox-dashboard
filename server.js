@@ -5,6 +5,10 @@ const bodyParser = require("body-parser");
 const cors = require('cors');
 const passport = require("passport");
 const users = require("./routes/api/users");
+const news = require("./routes/api/news");
+const sport = require("./routes/api/sport");
+const tasks = require("./routes/api/tasks");
+const photos = require("./routes/api/photos");
 
 // Initialize app
 const app = express();
@@ -26,7 +30,11 @@ const db = require("./config/keys").mongoURI;
 mongoose
   .connect(
     db,
-    { useNewUrlParser: true }
+    {
+      useNewUrlParser: true,
+      useFindAndModify:false,
+      useUnifiedTopology: true
+     }
   )
   .then(() => console.log("MongoDB successfully connected"))
   .catch(err => console.log(err));
@@ -39,6 +47,12 @@ require("./config/passport")(passport);
 
 // Routes
 app.use("/api/users", users);
+app.use("/api/news", news);
+app.use("/api/sport", sport);
+app.use("/api/photos", photos);
+app.use("/api/tasks", tasks);
+app.use('/public', express.static('public'));
+
 
 // Set port for server to run on and have app listen on port
 const port = process.env.PORT || 5000;
