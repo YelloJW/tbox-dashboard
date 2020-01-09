@@ -63,8 +63,8 @@ router.post("/register", upload.single('profileImg'), (req, res, next) => {
         name: req.body.name,
         email: req.body.email,
         password: req.body.password,
-        profileImg: url + '/public/profileImgs/' + req.file.filename
-      });
+        profileImg: req.file ? url + '/public/profileImgs/' + req.file.filename : "http://s3.amazonaws.com/37assets/svn/765-default-avatar.png"
+      })
 
       // Hash password using bcrypt before saving in database
       bcrypt.genSalt(10, (err, salt) => {
