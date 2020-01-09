@@ -1,0 +1,30 @@
+.input-team {
+  padding-top: 3%;
+}
+
+.results {
+  padding: 0%;
+  height: 100%;
+}
+
+.results-summary {
+  padding: 4%;
+  font-size: 20px;
+}
+
+.results-summary span {
+  padding: 0px 20px;
+}
+
+
+.win-summary {
+  height: 60%;
+  padding: 2%;
+  overflow-y: scroll;
+}
+
+.win-summary ul {
+  list-style: none;
+  padding: 0%;
+  font-size: 20px;
+}
