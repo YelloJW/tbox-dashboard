@@ -20,10 +20,40 @@
   outline: none;
 }
 
+.form-control-plaintext::placeholder{
+  color: white;
+  opacity: 0.5;
+}
+
 .redirect-to-register {
   font-size: 25px;
 }
 
 .redirect-to-register a{
   color: yellow;
+}
+
+.form-errors{
+  text-align: left;
+}
+
+.form-error {
+  padding: 0px;
+  letter-spacing: 0.5px;
+  font-size: 20px;
+  color: black;
+}
+
+.profile-upload {
+  display:none;
+}
+
+.profile-upload-label {
+  border: 3px solid #EBD860;
+  background: rgba(100, 100, 100, 0.5);
+  margin-top: 70px;
+  padding: 70px 100px;
+  border-radius: 5px;
+  font-size: 60px;
+
 }
