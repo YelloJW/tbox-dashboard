@@ -1,25 +1,41 @@
 import React, { Component} from 'react'
+import axios from 'axios';
+
 
 class News extends Component {
   constructor(props) {
-    super(props)
+    super(props);
+
+    this.state = {
+      title: this.props.location.state.title,
+      image_src: "",
+      content: this.props.location.state.content
+    }
   }
 
-
   componentDidMount () {
-    fetch('https://cors-anywhere.herokuapp.com/' + this.props.location.state.url)
+    const url = {url: this.props.location.state.url}
+    axios.post('http://localhost:5000/api/news/scrape', url)
       .then(res => {
-        // res.json()
-      });
+      console.log(res)
+      this.setState({
+        title: res.data.title,
+        image_src: res.data.image,
+        content: res.data.content
+      })
+    })
+    .catch(err => {
+      console.log(err)
+    });
   }
 
   render() {
     return (
       <div className="newsContainer">
-          <img className="newsImg" src="" alt=""/>
+          <img className="newsImg" src={this.state.image_src} alt=""/>
           <div className="newsContent">
-            <h2>{this.props.location.state.title}</h2>
-            <p>{this.props.location.state.content} "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+            <h2>{this.state.title}</h2>
+            <p>{this.state.content}</p>
           </div>
       </div>
     )

@@ -18,10 +18,8 @@ class News extends Component {
     const parser = new Parser();
     (async () => {
       const feed = await parser.parseURL('https://cors-anywhere.herokuapp.com/http://feeds.bbci.co.uk/news/rss.xml');
-      console.log(feed)
       const items = feed.items.length
       const item = Math.ceil(Math.random() * items)
-      console.log(feed.items[item].link)
       this.setState({
         item: item,
         title: feed.items[item].title,
@@ -43,7 +41,7 @@ class News extends Component {
             <h2>News</h2>
           </div>
           <div className="dashboard-card-contents p-3">
-            <h5>{this.state.title.substring(0,30)}...</h5>
+            <h5>{this.state.title.substring(0,40)}...</h5>
             <p>{this.state.content}</p>
           </div>
         </div>
