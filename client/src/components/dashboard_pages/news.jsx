@@ -9,7 +9,7 @@ class News extends Component {
     this.state = {
       title: this.props.location.state.title,
       image_src: "",
-      content: this.props.location.state.content
+      content: "Loading article"
     }
   }
 

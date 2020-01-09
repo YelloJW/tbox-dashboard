@@ -9,7 +9,7 @@ class Clothes extends Component {
           <h4>Clothes</h4>
         </div>
         <div className="dashboard-card-contents">
-          <p>some info about Clothes</p>
+          <p>TBC</p>
         </div>
       </div>
     )

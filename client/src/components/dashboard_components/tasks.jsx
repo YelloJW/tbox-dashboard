@@ -22,9 +22,7 @@ class Tasks extends Component {
         previewTasks: res.data.slice(0,3)
       })
     })
-    .catch(err => {
-      console.log(err)
-    })
+    .catch(err => console.log(err))
   }
 
   setLabel= (task) => {

@@ -16,14 +16,15 @@
 }
 
 .dashboard-container {
-  margin: 0 auto;
+  margin: 2% 10%;
   height: 100%;
   width:100%;
   display: grid;
   grid-gap: 3%;
-  grid-template-columns: 30% 30% 30%;
-  grid-template-rows: 38%;
+  grid-template-columns: 80%;
+  grid-template-rows: 45%;
   color: black;
+  overflow-y: scroll;
 }
 
 .dashboard-container a{
@@ -38,5 +39,33 @@
   height: 125px;
   width: 125px;
   border-radius: 50%;
-  border: 3px solid white;
+  border: 5px solid rgba(255, 255, 255,1);
+}
+
+@media (min-width: 768px) {
+  .dashboard-container {
+    margin: 0 auto;
+    height: 100%;
+    width:100%;
+    display: grid;
+    grid-gap: 3%;
+    grid-template-columns: 47% 47%;
+    grid-template-rows: 38%;
+    color: black;
+  }
+
+}
+
+@media (min-width: 992px) {
+  .dashboard-container {
+    margin: 2% auto;
+    height: 100%;
+    width:100%;
+    display: grid;
+    grid-gap: 5%;
+    grid-template-columns: 30% 30% 30%;
+    grid-template-rows: 40%;
+    color: black;
+  }
+
 }

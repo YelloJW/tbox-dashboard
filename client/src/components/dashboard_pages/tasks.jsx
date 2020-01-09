@@ -39,7 +39,7 @@ class Task extends Component {
     .catch(err => {
       console.log(err)
     })
-    document.location.reload()
+    this.componentDidMount()
   }
 
   onCheckbox = (e) => {
@@ -48,7 +48,7 @@ class Task extends Component {
     .catch(err => {
       console.log(err)
     })
-    document.location.reload()
+    this.componentDidMount()
   }
 
   setLabel= (task) => {

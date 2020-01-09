@@ -9,7 +9,8 @@ class Photos extends Component {
     this.state = {
       user: JSON.parse(localStorage.getItem('user')),
       photo: "",
-      photos: []
+      photos: [],
+      previewPhotos: []
     }
   }
 
@@ -17,7 +18,8 @@ class Photos extends Component {
     axios.post('http://localhost:5000/api/photos/photos', {user: this.state.user})
     .then(res => {
       this.setState({
-        photos: res.data.slice(0,4)
+        photos: res.data,
+        previewPhotos: res.data.slice(0,4)
       })
     })
     .catch(err => {
@@ -26,13 +28,13 @@ class Photos extends Component {
   }
 
   render() {
-    const photos = this.state.photos
+    const photos = this.state.previewPhotos
     const photoElements = photos.map(photo => <img className="photo-thumbnail" key={photo._id} src={photo.path} alt=""/>)
     return(
       <Link to={"/photos"}>
         <div className="dashboard-card">
           <div className="dashboard-card-title">
-            <h2>Photos</h2>
+            <h2>Photos ({this.state.photos.length})</h2>
           </div>
           <div className="dashboard-card-contents">
             <div className="photo-thumbnail-container">

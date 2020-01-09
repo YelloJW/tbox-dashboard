@@ -23,8 +23,6 @@ class Photo extends Component {
     const formData = new FormData()
     formData.append('photo', this.state.photo)
     formData.append('user', this.state.user.email)
-    console.log(formData)
-
     axios.post('http://localhost:5000/api/photos/upload', formData)
     .catch(err => {
       console.log(err)

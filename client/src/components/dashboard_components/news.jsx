@@ -41,8 +41,8 @@ class News extends Component {
             <h2>News</h2>
           </div>
           <div className="dashboard-card-contents p-3">
-            <h5>{this.state.title.substring(0,40)}...</h5>
-            <p>{this.state.content}</p>
+            <h5>{this.state.title.length > 65 ? this.state.title.substring(0,65) + '...': this.state.title}</h5>
+            <p>{this.state.content.length > 90 ? this.state.content.substring(0,90) + '...': this.state.content}</p>
           </div>
         </div>
       </Link>

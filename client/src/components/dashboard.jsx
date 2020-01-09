@@ -22,7 +22,7 @@ class Dashboard extends Component {
     return (
     <div className="container">
       <h1 className="dashboard-title">Good day {user.name}</h1>
-      <img src={user.profileImg} alt="" className="profile-img"/>
+      <img src={user.profileImg || "http://s3.amazonaws.com/37assets/svn/765-default-avatar.png"} alt="" className="profile-img"/>
       <div className="dashboard-container">
         <Weather/>
         <News/>
