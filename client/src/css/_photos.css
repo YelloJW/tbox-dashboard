@@ -1,0 +1,66 @@
+
+.photo-container {
+  width: 100%;
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  overflow-y: auto;
+  margin-bottom: 3%;
+}
+
+::-webkit-scrollbar {
+  display:none;
+}
+
+.photo {
+  background: rgba(255,255,255,0.5);
+  height: 300px;
+  min-width: 280px;
+  margin: 2%;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px gray;
+}
+
+.photo form {
+  padding: 20% 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.photo input{
+  display:block;
+  margin: 10% 20%;
+}
+
+
+.photo label{
+  color:black;
+  padding: ;
+  font-size: 20px;
+  align-self: center;
+}
+
+.photo button{
+  display:block;
+  margin: 0px auto;
+  width: 100px;
+  border-radius: 4px;
+  padding: 10px;
+}
+
+.photo-thumbnail-container {
+  padding: 10px 20%;
+  height:100%;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-gap: 10%;
+}
+
+.photo-thumbnail {
+  height: 100%;
+  padding: 2px;
+  min-width: 50%;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px gray;
+}
