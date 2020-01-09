@@ -1,3 +1,9 @@
+.latest-results {
+  list-style: none;
+  padding:0;
+  text-align: center;
+}
+
 .input-team {
   padding-top: 3%;
 }
@@ -24,7 +30,6 @@
 }
 
 .win-summary ul {
-  list-style: none;
-  padding: 0%;
+    padding: 0%;
   font-size: 20px;
 }

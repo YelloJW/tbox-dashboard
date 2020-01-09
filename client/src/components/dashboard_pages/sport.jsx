@@ -37,7 +37,7 @@ class Sport extends Component {
           <div className="input-team row">
             <div className="col-6 offset-3 form-group">
               <label htmlFor="team">Team</label>
-              <input className="form-control-plaintext" onChange={this.onChange} id="team" type="text" placeholder="Team name e.g. Fiorentina"/>
+              <input className="form-control-plaintext" onChange={this.onChange} id="team" type="text" placeholder="e.g. Fiorentina"/>
             </div>
           </div>
         </div>

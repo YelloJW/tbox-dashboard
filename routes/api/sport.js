@@ -6,6 +6,24 @@ const fs = require('fs');
 const csvParser = require('csv-parser');
 const file = './sport_data.csv'
 
+router.get("/results", async (req, res) => {
+    const results = []
+
+    const send = () => {
+        return res.send({results:results.slice(-5)})
+      }
+
+    fs.createReadStream(file).pipe(csvParser())
+   .on('data', (row) =>  {
+    const result = `${row.HomeTeam} (${row.FTHG}) vs ${row.AwayTeam} (${row.FTAG})`
+    results.push([result]);
+   })
+   .on('end', () => {
+    send()
+   })
+});
+
+
 router.post("/results", async (req, res) => {
   const team = req.body.team[0].toUpperCase() + req.body.team.substring(1)
   console.log(team)
