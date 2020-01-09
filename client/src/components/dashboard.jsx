@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import history from '../history';
 
 import Weather from './dashboard_components/weather';
 import News from './dashboard_components/news';
@@ -10,17 +8,27 @@ import Tasks from './dashboard_components/tasks';
 import Clothes from './dashboard_components/clothes';
 
 class Dashboard extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state={
+      user: JSON.parse(localStorage.getItem('user'))
+    }
+  }
+
   render() {
-    const user = history.location.state.email
+    const user = this.state.user
+
     return (
     <div className="container">
-      <h1 className="dashboard-title">Good day {user}</h1>
+      <h1 className="dashboard-title">Good day {user.name}</h1>
+      <img src={user.profileImg} alt="" className="profile-img"/>
       <div className="dashboard-container">
         <Weather/>
         <News/>
         <Sport/>
-        <Photos/>
-        <Tasks/>
+        <Photos user={user}/>
+        <Tasks user={user}/>
         <Clothes/>
       </div>
     </div>

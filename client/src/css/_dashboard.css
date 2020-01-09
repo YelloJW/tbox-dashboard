@@ -17,10 +17,10 @@
 
 .dashboard-container {
   margin: 0 auto;
-  height: 80%;
+  height: 100%;
   width:100%;
   display: grid;
-  grid-gap: 7%;
+  grid-gap: 3%;
   grid-template-columns: 30% 30% 30%;
   grid-template-rows: 38%;
   color: black;
@@ -31,3 +31,12 @@
   color: black;
 }
 
+.profile-img {
+  position: absolute;
+  top: 3%;
+  right: 2%;
+  height: 125px;
+  width: 125px;
+  border-radius: 50%;
+  border: 3px solid white;
+}
