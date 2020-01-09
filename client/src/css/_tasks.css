@@ -1,0 +1,91 @@
+/* task page components*/
+
+.new-task {
+  margin: 40px 10px;
+  width: 100%;
+  height: 50px;
+  display:flex;
+  justify-content: space-between;
+}
+
+.new-task input {
+  height: 100%;
+  width: 80%;
+  background:none;
+  border: none;
+  color: white;
+  font-size: 30px;
+  opacity: 1;
+}
+
+.new-task input::placeholder {
+  color: white;
+  font-size: 30px;
+  opacity: 0.5;
+}
+
+.add-task {
+  background:none;
+  border: none;
+  font-size: 50px;
+  line-height: 10px;
+  font-weight: bold;
+  color: white;
+  width: 50px;
+  }
+
+.tasks {
+  height:100%;
+  margin: 20px 20%;
+}
+
+.task {
+  margin: 10px;
+  height: 50px;
+  width: 100%;
+  display:flex;
+  justify-content: space-between;
+}
+
+.task span {
+  font-size: 30px;
+}
+
+.task input[type=checkbox]{
+  display:none;
+}
+
+.task label {
+  height: 50px;
+  width: 50px;
+  border: 2px solid white;
+  border-radius: 3px;
+  font-size: 30px;
+}
+
+
+/* dahboard task card components*/
+.task-thumbnail {
+  margin: 0 20px;
+  padding: 25px;
+  height: 50px;
+  width: 90%;
+  display:flex;
+  justify-content: space-between;
+}
+
+.task-thumbnail span {
+  font-size: 20px;
+}
+
+.task-thumbnail input[type=checkbox]{
+  display:none;
+}
+
+.task-thumbnail label {
+  height: 30px;
+  width: 30px;
+  border: 2px solid white;
+  border-radius: 3px;
+  font-size: 20px;
+}
