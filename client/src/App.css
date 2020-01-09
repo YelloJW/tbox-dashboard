@@ -5,6 +5,9 @@
 @import 'css/_form.css';
 @import 'css/_weather.css';
 @import 'css/_news.css';
+@import 'css/_sport.css';
+@import 'css/_photos.css';
+@import 'css/_tasks.css';
 
 
 body {
@@ -19,3 +22,9 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 600;
 }
 
+.page-heading {
+  font-size: 7vh;
+  position: absolute;
+  top: 5%;
+  left: 3%;
+}
