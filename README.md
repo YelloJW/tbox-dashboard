@@ -9,6 +9,7 @@ A MERN application (MongoDB, Express, React, Node) that allows users to login / 
 # Setup
 ``` 
 git clone git@github.com:YelloJW/tbox-dashboard.git
+cd tbox-dashboard
 npm install
 cd client && npm install
 cd .. && npm run dev
