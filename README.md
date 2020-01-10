@@ -16,6 +16,9 @@ cd .. && npm run dev
 Runs on localhost:3000
 
 # Improvements
--	Log out functionality
--	Uncompleted sections (Clothes)
+- Move routing actions into controller directory (create controllers for Auth, Weather, News etc.)
+-	Add Log out functionality
+- Add Destroy CRUD method to Photos and Tasks
+- Scrape news article whilst on dahboard page to reduce loading time when navigating to news page
+-	Complete clothes section
 
