@@ -6,7 +6,7 @@ class Clothes extends Component {
     return (
       <div className="dashboard-card">
         <div className="dashboard-card-title">
-          <h4>Clothes</h4>
+          <h2>Clothes</h2>
         </div>
         <div className="dashboard-card-contents">
           <p>TBC</p>

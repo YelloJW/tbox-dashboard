@@ -8,9 +8,7 @@ class Tasks extends Component {
 
     this.state = {
       user: JSON.parse(localStorage.getItem('user')),
-      task: "",
       tasks: [],
-      previewTasks: []
     }
   }
 
@@ -19,7 +17,6 @@ class Tasks extends Component {
     .then(res => {
       this.setState({
         tasks: res.data,
-        previewTasks: res.data.slice(0,3)
       })
     })
     .catch(err => console.log(err))
@@ -34,16 +31,19 @@ class Tasks extends Component {
   }
 
   render() {
-    const tasks = this.state.previewTasks
-    const taskElements = tasks.map(task => <div key={task._id} className="task-thumbnail"><span>{task.task}</span><input id={task._id} type="checkbox"/>{this.setLabel(task)}</div> )
+    const tasksCount = this.state.tasks.length
+    const previewTasks = this.state.tasks.slice(0,3)
+    const taskComponents = previewTasks.map(task => <div key={task._id} className="task-thumbnail"><span>{task.task}</span><input id={task._id} type="checkbox"/>{this.setLabel(task)}</div> )
+    const taskPlaceholder = taskComponents.length === 0 ? <p> No tasks to display, add your first task </p> : "" ;
     return(
       <Link to={"/tasks"}>
         <div className="dashboard-card">
           <div className="dashboard-card-title">
-            <h2>Tasks ({this.state.tasks.length})</h2>
+            <h2>Tasks ({tasksCount})</h2>
           </div>
           <div className="dashboard-card-contents">
-           {taskElements}
+            {taskComponents}
+            {taskPlaceholder}
           </div>
         </div>
       </Link>

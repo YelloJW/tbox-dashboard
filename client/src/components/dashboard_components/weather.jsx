@@ -27,8 +27,6 @@ class Weather extends Component {
         temperature: JSONObj.main.temp,
       })
     });
-    // console.log(this.state.lat)
-    // console.log(this.state.lon)
   }
 
   setCoordinates = () => {
@@ -43,7 +41,6 @@ class Weather extends Component {
       maximumAge: 0
     };
     const success = (pos) => {
-      // console.log(pos)
       this.setState({
         lat: pos.coords.latitude,
         lon: pos.coords.longitude
@@ -70,6 +67,10 @@ class Weather extends Component {
   }
 
   render() {
+    const location = this.state.location
+    const description = this.state.description
+    const temperature = Math.round(this.state.temperature)
+    const image = <img src={`http://openweathermap.org/img/wn/${this.state.icon}@2x.png`} alt=""/>
     return(
       <div className="dashboard-card">
         <div className="dashboard-card-title">
@@ -77,13 +78,11 @@ class Weather extends Component {
         </div>
         <div className="dashboard-card-contents">
           <div className="weather">
-            <img src={`http://openweathermap.org/img/wn/${this.state.icon}@2x.png`} alt=""/>
+            {image}
             <div>
-              <h4 className="location">{this.state.location}</h4>
-              <div className="d-flex">
-                <p>{this.state.description}</p>
-                <p>{Math.round(this.state.temperature)}°C</p>
-              </div>
+              <h4 className="location">{location}</h4>
+              <p>{description}</p>
+              <p>{temperature}°C</p>
             </div>
           </div>
         </div>

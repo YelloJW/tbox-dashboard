@@ -8,7 +8,7 @@ class Sport extends Component {
 
     this.state = {
       team: "",
-      resultsSummary: {},
+      results: {},
       wins: [{}]
     }
   }
@@ -20,7 +20,7 @@ class Sport extends Component {
     axios.post('http://localhost:5000/api/sport/results', {team: e.target.value})
       .then(res => {
         this.setState({
-          resultsSummary: res.data.summary,
+          results: res.data.summary,
           wins: res.data.wins
         })
     });
@@ -28,8 +28,12 @@ class Sport extends Component {
 
   render() {
     const wins = this.state.wins
-    const resultsSummary = this.state.resultsSummary
-    const winList = wins.map(res => <li key={wins.indexOf(res)}> {res.home} vs {res.away} ({res.result}) </li>)
+    const results = this.state.results
+    const resultsNotEmpty = Object.entries(results) != 0 // true or false
+    const resultsSummary = resultsNotEmpty ? <div className="results-summary"><h2>Results</h2><span>Wins {results.W}</span><span>Losses {results.L}</span><span>Draws {results.D}</span></div> : "" ;
+    const winComponents = wins.map(res => <li key={wins.indexOf(res)}> {res.home} vs {res.away} ({res.result}) </li>)
+    const winSummary = resultsNotEmpty ? <div className="win-summary"><h2>Wins</h2><ul>{winComponents}</ul></div> : "" ;
+
     return (
       <div className="container">
         <div>
@@ -42,18 +46,8 @@ class Sport extends Component {
           </div>
         </div>
         <div className="results">
-          <div className="results-summary">
-            <h2>{resultsSummary.W ? 'Results' : ""}</h2>
-            <span>{resultsSummary.W ? 'Wins: ' + resultsSummary.W : ""}</span>
-            <span>{resultsSummary.L ? 'Losses: ' + resultsSummary.L : ""}</span>
-            <span>{resultsSummary.D ? 'Draws: ' + resultsSummary.D : ""}</span>
-          </div>
-          <div className="win-summary">
-            <h2>{resultsSummary.W ? 'Wins' : ""}</h2>
-            <ul>
-              {resultsSummary.W ? winList: ""}
-            </ul>
-          </div>
+          {resultsSummary}
+          {winSummary}
         </div>
       </div>
     )

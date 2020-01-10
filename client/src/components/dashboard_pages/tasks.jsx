@@ -11,6 +11,9 @@ class Task extends Component {
       task: "",
       tasks: []
     }
+
+    this.input = React.createRef()
+
   }
 
   componentDidMount () {
@@ -23,6 +26,12 @@ class Task extends Component {
     .catch(err => {
       console.log(err)
     })
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+  if (prevState.tasks !== this.state.tasks) {
+    this.componentDidMount()
+  }
   }
 
   onChange = e => {
@@ -39,10 +48,10 @@ class Task extends Component {
     .catch(err => {
       console.log(err)
     })
-    this.componentDidMount()
+    this.input.current.value = null;
   }
 
-  onCheckbox = (e) => {
+  onCheckBox = (e) => {
     const task = JSON.parse(e.target.dataset.task)
     axios.put('http://localhost:5000/api/tasks/update', task)
     .catch(err => {
@@ -61,13 +70,13 @@ class Task extends Component {
 
   render() {
     const tasks = this.state.tasks
-    const taskElements = tasks.map(task => <div key={task._id} className="task"><span>{task.task}</span><input id={task._id} type="checkbox" checked={task.completed} onChange={this.onCheckbox} data-task={JSON.stringify(task)}/>{this.setLabel(task)}</div> )
+    const taskElements = tasks.map(task => <div key={task._id} className="task"><span>{task.task}</span><input id={task._id} type="checkbox" checked={task.completed} onChange={this.onCheckBox} data-task={JSON.stringify(task)}/>{this.setLabel(task)}</div> )
     return (
       <div className="container">
         <h1>Your tasks</h1>
         <div className="tasks">
           <form className="new-task" onSubmit={this.onSubmit}>
-            <input className="" onChange={this.onChange} id="task" type="text" placeholder="New task"/>
+            <input ref={this.input} className="" onChange={this.onChange} id="task" type="text" placeholder="New task"/>
             <button type="submit" className="add-task" >+</button>
           </form>
           {taskElements}

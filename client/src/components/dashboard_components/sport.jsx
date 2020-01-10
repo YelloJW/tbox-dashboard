@@ -13,19 +13,19 @@ class Sport extends Component {
 
   componentDidMount () {
     axios.get('http://localhost:5000/api/sport/results')
-      .then(res => {
-        this.setState({
-          results: res.data.results,
-        })
+    .then(res => {
+      this.setState({
+        results: res.data.results,
       })
-      .catch(err => {
-        console.log(err)
-      });
+    })
+    .catch(err => {
+      console.log(err)
+    });
   }
 
   render() {
     const results = this.state.results
-    const result = results.map(res => <li key={results.indexOf(res)}> {res} </li>)
+    const result = results.map(res => <li key={results.indexOf(res)}>{res}</li>)
     return(
       <Link to={"/sport"}>
         <div className="dashboard-card">

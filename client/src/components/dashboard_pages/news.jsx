@@ -8,8 +8,8 @@ class News extends Component {
 
     this.state = {
       title: this.props.location.state.title,
-      image_src: "",
-      content: "Loading article"
+      content: "Loading article",
+      imageSrc: ""
     }
   }
 
@@ -17,11 +17,10 @@ class News extends Component {
     const url = {url: this.props.location.state.url}
     axios.post('http://localhost:5000/api/news/scrape', url)
       .then(res => {
-      console.log(res)
       this.setState({
         title: res.data.title,
-        image_src: res.data.image,
-        content: res.data.content
+        content: res.data.content,
+        imageSrc: res.data.image
       })
     })
     .catch(err => {
@@ -30,12 +29,15 @@ class News extends Component {
   }
 
   render() {
+    const title = this.state.title
+    const content = this.state.content
+    const imageSrc = this.state.imageSrc
     return (
       <div className="newsContainer">
-          <img className="newsImg" src={this.state.image_src} alt=""/>
+          <img className="newsImg" src={imageSrc} alt=""/>
           <div className="newsContent">
-            <h2>{this.state.title}</h2>
-            <p>{this.state.content}</p>
+            <h2>{title}</h2>
+            <p>{content}</p>
           </div>
       </div>
     )
