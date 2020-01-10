@@ -4,9 +4,34 @@ const router = express.Router();
 const multer = require('multer');
 const uuidv4 = require('uuid/v4');
 const DIR = './public/userPhotos';
-// const upload = multer({ dest: DIR })
 
+// Load models
+const User = require("../../models/User");
+const Photo = require("../../models/Photo");
 
+// route to return user photos
+router.post("/photos", (req, res, next) => {
+  // set user
+  const userId = req.body.userId
+  // find user
+  User.findOne({ _id: userId }).then(user => {
+    if (user) {
+      // if user found, find user photos
+      Photo.find({user: user.id}, (err, photos) => {
+        if(err) {
+          console.log(err)
+        } else {
+          // return photos
+          res.json(photos)
+        }
+      })
+    } else {
+      // res.status().json()
+    }
+  });
+});
+
+// config multer storage and upload settings
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
         cb(null, DIR);
@@ -29,51 +54,27 @@ const upload = multer({
     }
 });
 
-// Load models
-const User = require("../../models/User");
-const Photo = require("../../models/Photo");
-
 // Route for uploading a photo
 router.post("/upload", upload.single('photo'), (req, res, next) => {
-  console.log('file to upload')
-  console.log(req.file)
+  // set user
+  const userId = req.body.userId
 
-  console.log('associated user email')
-  console.log(req.body.user)
-  console.log('finding user')
-  User.findOne({ email: req.body.user }).then(user => {
+  // find user
+  User.findOne({ _id: userId }).then(user => {
       if (user) {
+        // get path
         const url = req.protocol + '://' + req.get('host')
-        console.log('user found')
-        console.log(user)
-        console.log('creating new photo')
+        // if user found in db create new photo
         const newPhoto = new Photo({
         path: url + '/public/userPhotos/' + req.file.filename,
         user: user
       });
+      // save photo
       newPhoto.save()
       } else {
         console.log('cant find user')
       }
     });
-
-});
-
-router.post("/photos", (req, res, next) => {
-  const user = req.body.user
-  User.findOne({ email: user.email }).then(user => {
-    if (user) {
-      Photo.find({user: user.id}, (err, photos) => {
-        if(err) {
-          // res.status().json()
-        } else {
-          res.json(photos)
-        }
-      })
-    } else {
-      // res.status().json()
-    }
-  });
 });
 
 

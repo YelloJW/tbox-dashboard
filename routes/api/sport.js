@@ -6,15 +6,18 @@ const fs = require('fs');
 const csvParser = require('csv-parser');
 const file = './sport_data.csv'
 
+// get latest results
 router.get("/results", async (req, res) => {
     const results = []
 
     const send = () => {
+        // return last 5 results
         return res.send({results:results.slice(-5)})
       }
 
     fs.createReadStream(file).pipe(csvParser())
    .on('data', (row) =>  {
+    // for each row of CSV push result to results array
     const result = `${row.HomeTeam} (${row.FTHG}) vs ${row.AwayTeam} (${row.FTAG})`
     results.push([result]);
    })
@@ -25,8 +28,8 @@ router.get("/results", async (req, res) => {
 
 
 router.post("/results", async (req, res) => {
+  // save team
   const team = req.body.team[0].toUpperCase() + req.body.team.substring(1)
-  console.log(team)
   const wins = []
   const resultsSummary = {}
 
@@ -35,8 +38,9 @@ router.post("/results", async (req, res) => {
   }
 
   fs.createReadStream(file).pipe(csvParser())
-   .on('data', (row) =>  {
-     if ((team == row.HomeTeam && row.FTR == "H") || (team == row.AwayTeam && row.FTR == "A")) {
+  .on('data', (row) =>  {
+    // if team won save fixture to wins array, else count if result was a win, loss or draw
+    if ((team == row.HomeTeam && row.FTR == "H") || (team == row.AwayTeam && row.FTR == "A")) {
       wins.push({home: row.HomeTeam, away: row.AwayTeam, result: row.FTR});
       resultsSummary['W'] = (resultsSummary['W'] || 0) + 1;
     } else if ((team == row.HomeTeam && row.FTR == "A") || (team == row.AwayTeam && row.FTR == "H")) {

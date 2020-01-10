@@ -1,4 +1,4 @@
-
+/*photo page components*/
 .photo-container {
   width: 100%;
   display:flex;
@@ -6,10 +6,6 @@
   justify-content: center;
   overflow-y: auto;
   margin-bottom: 3%;
-}
-
-::-webkit-scrollbar {
-  display:none;
 }
 
 .photo {
@@ -28,17 +24,18 @@
   justify-content: center;
 }
 
-.photo input{
-  display:block;
+.photo input:invalid{
+ display:block;
   margin: 10% 20%;
+  color: black;
+  opacity: 0.9;
 }
 
-
-.photo label{
-  color:black;
-  padding: ;
-  font-size: 20px;
-  align-self: center;
+.photo input:valid{
+  display:block;
+  margin: 10% 20%;
+  color: black;
+  opacity: 0.5;
 }
 
 .photo button{
@@ -48,9 +45,10 @@
   margin: 0px auto;
   width: 100px;
   border-radius: 4px;
-  padding: 10px;
+  padding: 5px;
 }
 
+/*dahboard photo card components*/
 .photo-thumbnail-container {
   padding: 5% 15%;
   height:95%;
@@ -63,6 +61,6 @@
   max-height: 100%;
   padding: 0px;
   max-width: 100%;
-  border-radius: 3px;
-  box-shadow: 0px 0px 5px gray;
+  border-radius: 4px;
+  box-shadow: 0px 0px 5px #CDCDCD;
 }

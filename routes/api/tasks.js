@@ -6,16 +6,20 @@ const router = express.Router();
 const User = require("../../models/User");
 const Task = require("../../models/Task");
 
+// route to retrive users tasks
 router.post("/tasks", (req, res, next) => {
+  // set user
   const user = req.body.user
+  // find user
   User.findOne({ email: user.email }).then(user => {
       if (user) {
-        console.log(user.id)
+        // once user found return all tasks for that user
         Task.find({user: user.id}, (err, tasks) => {
           if(err) {
-            console.log('There is no image')
+            console.log('No tasks found')
             // res.status().json()
           } else {
+            // send tasks
             res.json(tasks)
           }
         })
@@ -26,53 +30,53 @@ router.post("/tasks", (req, res, next) => {
     });
 });
 
+// route for creating new task
 router.post("/new", (req, res, next) => {
-  console.log(req.body.user)
-  console.log(req.body.task)
+  // set user
+  const user = req.body.user
 
-
+  // check task not empty
   if(!req.body.task) {
     return res.status(400).json({
       taskempty: 'please provide a description of the task'
     });
   }
 
-  console.log('creating new task')
+  // create new task
   const task = new Task ({
     task: req.body.task,
     completed: false,
-    user: req.body.user
+    user: user
   })
 
-  console.log('saving new task')
+  // save new task
   task.save().
   then(data => {
-    console.log('task saved')
     res.json(data)
   }).catch(err => {
-    console.log('task not saved')
     res.status(500).json({
       message: err.message
     })
   })
 });
 
+// route for updating completion status of task
 router.put("/update", (req, res, next) => {
+  // set task
   const task = req.body
-  console.log('updating task' + task)
 
-  console.log('updating task object')
+  // set updated task upject
   const updatedTask = {
     completed: !task.completed,
   }
 
-  console.log('finding and updating task')
+  // find and update task
   Task.findByIdAndUpdate(task._id, updatedTask, (err, task) => {
     if(task){
-      console.log('task updated to' + task)
+      // console.log('task updated to' + task)
       res.json(task)
     } else {
-      console.log('task not found')
+      // console.log('task not found')
       res.status(404).json({noTaskById: err })
     }
   })

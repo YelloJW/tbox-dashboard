@@ -1,9 +1,4 @@
-.latest-results {
-  list-style: none;
-  padding:0;
-  text-align: center;
-}
-
+/* sport page components*/
 .input-team {
   padding-top: 3%;
 }
@@ -30,6 +25,14 @@
 }
 
 .win-summary ul {
-    padding: 0%;
+  list-style: none;
+  padding: 0%;
   font-size: 20px;
+}
+
+/* dahboard sport card components*/
+.latest-results {
+  list-style: none;
+  padding:0;
+  text-align: center;
 }

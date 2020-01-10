@@ -5,11 +5,13 @@ const cheerio = require('cheerio');
 const axios = require("axios");
 
 router.post("/scrape", async (req, res) => {
+  //save url
   const url = req.body.url
 
   const news = await axios.get(url)
     .then(res => {
       const $ = cheerio.load(res.data);
+      // consitional for variances in BBC DOM
       if (!$('.story-body__h1').text() == "") {
         const title = $('.story-body__h1').text();
         const img = !$('.js-image-replace').attr('src') == "" ? $('.js-image-replace').attr('src') : $('.media-placeholder').attr('src');
