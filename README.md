@@ -16,9 +16,10 @@ cd .. && npm run dev
 Runs on localhost:3000
 
 # Improvements
+- Error handling in photo and task routes
+- Routes for Destroying photos / tasks
 - Move routing actions into controller directory (create controllers for Auth, Weather, News etc.)
--	Add Log out functionality
-- Add Destroy CRUD method to Photos and Tasks
+-	Log out functionality
 - Scrape news article whilst on dahboard page to reduce loading time when navigating to news page
 -	Complete clothes section
 
