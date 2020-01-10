@@ -21,5 +21,6 @@ Runs on localhost:3000
 - Move routing actions into controller directory (create controllers for Auth, Weather, News etc.)
 -	Log out functionality
 - Scrape news article whilst on dahboard page to reduce loading time when navigating to news page
+- peview selected photos (registration page and photo page)
 -	Complete clothes section
 
